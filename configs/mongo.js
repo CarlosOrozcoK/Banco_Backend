@@ -2,7 +2,6 @@
 
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import User from '../src/users/user.model.js';
 import { hash as hashPassword } from 'argon2'; 
 
 dotenv.config();
@@ -42,19 +41,26 @@ export const dbConnection = async () => {
 
 const createDefaultAdmin = async () => {
     try {
-        const adminExists = await User.findOne({ username: 'ADMINB' });
+        const db = mongoose.connection.db;
+        const usersCollection = db.collection('users');
+
+        const adminExists = await usersCollection.findOne({ username: 'ADMINB' });
 
         if (!adminExists) {
             const hashedPassword = await hashPassword('ADMINB');
 
-            const admin = new User({
+            const admin = {
                 username: 'ADMINB',
                 password: hashedPassword,
-                role: 'ADMIN_ROLE',
-            });
+                role: 'ADMIN_ROLE'
+            };
 
-            await admin.save();
+            await usersCollection.insertOne(admin);
+            console.log('Usuario admin creado por defecto');
+        } else {
+            console.log('El usuario admin ya existe');
         }
     } catch (error) {
+        console.error('Error al crear el usuario admin:', error);
     }
 };

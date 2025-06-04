@@ -1,11 +1,10 @@
 import { body } from "express-validator";
 import { validarCampos } from "./validar-campos.js";
-import { existenteEmail,  } from "../helpers/db-validator.js";
+//import { existenteEmail,  } from "../helpers/db-validator.js";
 
 export const registerValidator = [
     body("name", "The naem is required!").not().isEmpty(),
     body("email", "You must enter a valid email!").isEmail(),
-    body("email").custom(existenteEmail),
     body("password", "Password must be at least 8 cahracters!").isLength({ min: 8 }),
     validarCampos
 ];

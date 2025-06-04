@@ -14,7 +14,8 @@ router.post(
 
 router.post(
     '/register',
-    register
+    register,
+    registerValidator
 );
 
 export default router;
