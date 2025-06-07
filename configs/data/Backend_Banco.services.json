@@ -1,0 +1,28 @@
+[{
+  "_id": {
+    "$oid": "68437f51ae4a9eacde0c5c07"
+  },
+  "name": "Servicio de Mantenimiento",
+  "description": "Incluye limpieza, revisión técnica y ajustes generales.",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-06-06T23:52:49.573Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-06T23:52:49.573Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684387b1a8132676b92e2ee7"
+  },
+  "name": "lavanderia",
+  "description": "Incluye los servicios generales y cubre cierto porcentaje de gastos",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-06-07T00:28:33.794Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-07T00:28:33.794Z"
+  }
+}]

@@ -8,6 +8,9 @@ import morgan from 'morgan';
 import rateLimit from 'express-rate-limit'; 
 import { dbConnection } from './mongo.js';
 import authRoutes from '../src/auth/auth.routes.js';
+import productRoutes from '../src/product/product-routes.js'
+import serviceRoutes from '../src/servicio/service-routes.js'
+import brandRoutes from '../src/Brand/brand-routes.js'
 
 
 dotenv.config();
@@ -30,6 +33,9 @@ const middlewares = (app) => {
 
 const routes = (app) => {
     app.use("/Backend_Banco/v1/auth", authRoutes);
+    app.use("/Backend_Banco/v1/product", productRoutes);
+    app.use("/Backend_Banco/v1/service", serviceRoutes);
+     app.use("/Backend_Banco/v1/brand", brandRoutes);
 }
 
 const conectarDB = async () => {

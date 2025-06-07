@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "684261ae531eb3cbc8218a31"
+  },
+  "username": "ADMINB",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$Xz0mdjSD0mfMBslUqPM8ww$vRwjQ65MpJlyVsBf/WJA64MPR4G7IlJ35tz6b6Ky/x4",
+  "role": "ADMIN_ROLE"
+},
+{
+  "_id": {
+    "$oid": "68437a78089052ced04184b2"
+  },
+  "name": "Juan Pérez",
+  "username": "juanp123",
+  "nickname": "Juanito",
+  "dpi": "1234567890101",
+  "direccion": "Calle 10 #45-67, Ciudad Guatemala",
+  "phone": "55551234",
+  "email": "juan.perez@example.com",
+  "password": "$argon2id$v=19$m=65536,t=3,p=4$rj+sEm1GEFTpkNvUi/2THg$iDg9ShCu5Jec7hrt8cyFyS3XZ2L5iFjaGqxUKVMoNN8",
+  "nombreTrabajo": "Ingeniero de Software",
+  "ingresosMensuales": 12000,
+  "role": "CLIENT_ROLE",
+  "estado": true,
+  "createdAt": {
+    "$date": "2025-06-06T23:32:08.767Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-06T23:32:08.767Z"
+  },
+  "noCuenta": "7811418749"
+}]

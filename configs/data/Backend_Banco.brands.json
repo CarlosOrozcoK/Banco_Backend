@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "68438c2686b76e3be13a5d99"
+  },
+  "name": "Teclado",
+  "image": "https://www.criptonoticias.com/wp-content/uploads/2017/07/krungsri-bank.jpg",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-06-07T00:47:34.032Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-07T00:47:34.032Z"
+  }
+}]

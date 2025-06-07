@@ -1,0 +1,32 @@
+[{
+  "_id": {
+    "$oid": "6843785d522df89d96d5937e"
+  },
+  "name": "Laptop Gamer",
+  "description": "Laptop potente con tarjeta gráfica dedicada",
+  "category": "Electrónica",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-06-06T23:23:09.902Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-06T23:23:09.902Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68438a6e86b76e3be13a5d93"
+  },
+  "name": "Teclado",
+  "description": "Incluye los servicios generales y cubre cierto porcentaje de gastos",
+  "category": "tecnologia",
+  "status": true,
+  "createdAt": {
+    "$date": "2025-06-07T00:40:14.844Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-07T00:40:14.844Z"
+  },
+  "__v": 0
+}]
