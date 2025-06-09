@@ -14,8 +14,10 @@ router.post(
 
 router.post(
     '/register',
-    register,
-    registerValidator
+    registerValidator,
+    deleteFileOnError,
+    register
 );
+
 
 export default router;

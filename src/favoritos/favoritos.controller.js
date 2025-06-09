@@ -6,7 +6,7 @@ import * as divisasService from './devisas.service.js';
 export const agregarFavorito = async (req, res) => {
   try {
     const { alias, cuentaDestino, tipo } = req.body;
-    const usuarioId = req.usuario._id;
+    const usuarioId = req.usuario._id; // <- asegurate que esto no sea undefined
 
     if (!['propia', 'tercero'].includes(tipo)) {
       return res.status(400).json({ error: 'Tipo de cuenta inválido' });
@@ -17,9 +17,11 @@ export const agregarFavorito = async (req, res) => {
 
     res.status(201).json(nuevoFavorito);
   } catch (err) {
-    res.status(500).json({ error: 'Error al agregar el favorito' });
+    console.error(err); // <-- AGREGAR ESTO
+    res.status(500).json({ error: 'Error al agregar el favorito', detalle: err.message }); // <-- DETALLE
   }
 };
+
 
 // Listar favoritos
 export const listarFavoritos = async (req, res) => {

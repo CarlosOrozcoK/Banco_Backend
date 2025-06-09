@@ -39,5 +39,5 @@ FavoritoSchema.methods.toJSON = function () {
   favorito.id = _id;
   return favorito;
 };
-
-export default model('Favorito', FavoritoSchema);
+const Favorito = model('Favorito', FavoritoSchema);
+export default Favorito;

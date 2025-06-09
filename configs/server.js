@@ -31,8 +31,7 @@ const middlewares = (app) => {
 
 const routes = (app) => {
     app.use("/Backend_Banco/v1/auth", authRoutes);
-    app.use("/Backend_Banco/v1/favoritos", favoritosRoutes); // ② monta las rutas de favoritos
-
+    app.use("/Backend_Banco/v1/favoritos", favoritosRoutes); 
 }
 
 const conectarDB = async () => {
