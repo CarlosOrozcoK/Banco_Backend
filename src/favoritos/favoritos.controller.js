@@ -1,6 +1,6 @@
 // favoritos.controller.js
 import Favorito from './favoritos.model.js';
-import * as divisasService from './divisas.service.js';
+import * as divisasService from './devisas.service.js';
 
 // Agregar favorito
 export const agregarFavorito = async (req, res) => {

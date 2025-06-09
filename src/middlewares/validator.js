@@ -1,4 +1,4 @@
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 import { validarCampos } from "./validar-campos.js";
 //import { existenteEmail,  } from "../helpers/db-validator.js";
 
@@ -16,6 +16,14 @@ export const loginValidator = [
     validarCampos
 ];
 
+export const favoritoValidator = (req, res, next) => {
+    const { alias, cuentaDestino, tipo } = req.body;
+    if (!alias || !cuentaDestino || !tipo) {
+        return res.status(400).json({ error: "Faltan datos del favorito" });
+    }
+    next();
+};
+
 export const favoritoAgregarValidator = [
     body("alias", "El alias es obligatorio").notEmpty(),
     body("cuentaDestino", "La cuenta destino es obligatoria").notEmpty(),
@@ -26,7 +34,6 @@ export const favoritoAgregarValidator = [
 ];
 
 export const favoritoTransferirValidator = [
-    param("id").custom(esObjectId).withMessage("ID inválido"),
     body("monto", "El monto es obligatorio y debe ser mayor a 0")
         .notEmpty()
         .isFloat({ gt: 0 }),
@@ -34,13 +41,13 @@ export const favoritoTransferirValidator = [
 ];
 
 export const favoritoEliminarValidator = [
-    param("id").custom(esObjectId).withMessage("ID inválido"),
     validarCampos
 ];
 
-export const conversionValidator = [
-    query("cantidad", "La cantidad es obligatoria y debe ser un número").notEmpty().isFloat({ gt: 0 }),
-    query("de", "Debe especificar la moneda de origen").notEmpty(),
-    query("a", "Debe especificar la moneda de destino").notEmpty(),
-    validarCampos
-];
+export const conversionValidator = (req, res, next) => {
+    const { cantidad, de, a } = req.query;
+    if (!cantidad || !de || !a) {
+        return res.status(400).json({ error: "Faltan parámetros de conversión" });
+    }
+    next();
+};
