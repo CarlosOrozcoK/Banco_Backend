@@ -1,4 +1,4 @@
-import { body, param } from "express-validator";
+import { body } from "express-validator";
 import { validarCampos } from "./validar-campos.js";
 //import { existenteEmail,  } from "../helpers/db-validator.js";
 

@@ -8,7 +8,7 @@ export const validarJWT = (req, res, next) => {
 
   try {
     const { uid } = jwt.verify(token, process.env.JWT_SECRET || 'secreto');
-    req.usuario = { _id: uid }; // o lo que tenga el token
+    req.usuario = { _id: uid }; 
     next();
   } catch (err) {
     res.status(401).json({ error: 'Token inválido' });
