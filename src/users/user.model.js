@@ -17,10 +17,6 @@ const UserSchema = Schema({
         required: [true, "The username is required!"],
     },
 
-    nickname: {
-        type: String,
-        trim: true,
-    },
 
     noCuenta: {
         type: String,
@@ -58,10 +54,6 @@ const UserSchema = Schema({
         type: String,
         required: [true, "The password is required!"],
         minLength: [8, "8 minimum characters!"],
-    },
-
-    profile: {
-        type: String,
     },
 
     nombreTrabajo: {

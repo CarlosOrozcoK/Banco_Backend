@@ -47,13 +47,11 @@ export const register = async (req, res) => {
         const {
             name,
             username,
-            nickname,
             dpi,
             direccion,
             phone,
             email,
             password,
-            profile,
             nombreTrabajo,
             ingresosMensuales,
             role
@@ -74,13 +72,11 @@ export const register = async (req, res) => {
         const newUser = new User({
             name,
             username,
-            nickname,
             dpi,
             direccion,
             phone,
             email,
             password: hashedPassword,
-            profile,
             nombreTrabajo,
             ingresosMensuales,
             role: role || 'CLIENT_ROLE',
