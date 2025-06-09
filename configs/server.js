@@ -8,6 +8,7 @@ import morgan from 'morgan';
 import rateLimit from 'express-rate-limit'; 
 import { dbConnection } from './mongo.js';
 import authRoutes from '../src/auth/auth.routes.js';
+import favoritosRoutes from '../src/favoritos/favoritos.routes.js'; // ① importa tu router de favoritos
 
 
 dotenv.config();
@@ -30,6 +31,8 @@ const middlewares = (app) => {
 
 const routes = (app) => {
     app.use("/Backend_Banco/v1/auth", authRoutes);
+    app.use("/Backend_Banco/v1/favoritos", favoritosRoutes); // ② monta las rutas de favoritos
+
 }
 
 const conectarDB = async () => {
