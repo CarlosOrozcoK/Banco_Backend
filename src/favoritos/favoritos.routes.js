@@ -1,11 +1,12 @@
 import express from 'express';
+import { validarJWT } from '../middlewares/validar-jwt.js';
+
 
 import {
   agregarFavorito,
   listarFavoritos,
   eliminarFavorito,
-  transferirDesdeFavorito,
-  convertirSaldo
+  transferirDesdeFavorito
 } from './favoritos.controller.js';
 
 import { favoritoValidator, conversionValidator } from '../middlewares/validator.js';
@@ -13,29 +14,14 @@ import { favoritoValidator, conversionValidator } from '../middlewares/validator
 const router = express.Router();
 
 
-router.post('/agregar',
-   favoritoValidator,
-    agregarFavorito);
+router.post('/agregar', validarJWT, favoritoValidator, agregarFavorito);
 
-router.get('/listar', 
-  listarFavoritos);
+router.get('/listar', validarJWT, listarFavoritos);
+router.delete('/:id',validarJWT, favoritoValidator, eliminarFavorito);
 
-router.delete('/:id',
-   favoritoValidator, 
-   eliminarFavorito);
+router.post('/transferir/:id',validarJWT , favoritoValidator, transferirDesdeFavorito);
 
-router.post('/transferir/:id', 
-  favoritoValidator, 
-  transferirDesdeFavorito);
-
-router.get('/convertir', 
-  conversionValidator, 
-  convertirSaldo);
 
 export default router;
-//* Método	URL	Descripción
-//POST	/api/favoritos/agregar	Agrega un nuevo favorito
-//GET	/api/favoritos/listar	Lista los favoritos del usuario
-//DELETE	/api/favoritos/eliminar/:id	Elimina un favorito por su ID
-//POST	/api/favoritos/transferir/:id	Transfiere a la cuenta favorita
-//GET	/api/favoritos/convertir	Convierte divisas con query params
+
+

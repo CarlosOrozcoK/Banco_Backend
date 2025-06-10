@@ -1,16 +1,18 @@
+// middlewares/validar-jwt.js
 import jwt from 'jsonwebtoken';
 
 export const validarJWT = (req, res, next) => {
-  const token = req.header('x-token');
+  const token = req.header('Authorization')?.replace('Bearer ', '');
+
   if (!token) {
-    return res.status(401).json({ error: 'Token no enviado' });
+    return res.status(401).json({ error: 'No hay token en la petición' });
   }
 
   try {
-    const { uid } = jwt.verify(token, process.env.JWT_SECRET || 'secreto');
-    req.usuario = { _id: uid }; 
+    const payload = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+    req.usuario = { _id: payload.uid }; // Ajusta según cómo esté tu payload
     next();
   } catch (err) {
-    res.status(401).json({ error: 'Token inválido' });
+    return res.status(401).json({ error: 'Token no válido' });
   }
 };

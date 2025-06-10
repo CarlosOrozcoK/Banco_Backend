@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import Favorito from './favoritos.model.js';
-import * as divisasService from './devisas.service.js';
 
 // Agregar favorito
 export const agregarFavorito = async (req, res) => {
@@ -8,7 +7,7 @@ export const agregarFavorito = async (req, res) => {
     if (!req.usuario || !req.usuario._id) {
       return res.status(401).json({ error: 'Usuario no autenticado' });
     }
-
+    
     const { alias, cuentaDestino, tipo } = req.body;
 
     if (!alias || !cuentaDestino || !tipo) {
@@ -52,6 +51,34 @@ export const listarFavoritos = async (req, res) => {
   }
 };
 
+// Eliminar favorito
+export const eliminarFavorito = async (req, res) => {
+  try {
+    if (!req.usuario || !req.usuario._id) {
+      return res.status(401).json({ error: 'Usuario no autenticado' });
+    }
+
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ error: 'ID no válido' });
+    }
+
+    const usuarioId = req.usuario._id;
+
+    const eliminado = await Favorito.findOneAndDelete({ _id: id, usuarioId });
+
+    if (!eliminado) {
+      return res.status(404).json({ error: 'Favorito no encontrado o no autorizado' });
+    }
+
+    res.json({ mensaje: 'Favorito eliminado exitosamente' });
+  } catch (err) {
+    console.error('Error al eliminar el favorito:', err);
+    res.status(500).json({ error: 'Error al eliminar el favorito', detalle: err.message });
+  }
+};
+
 // Transferencia desde favorito
 export const transferirDesdeFavorito = async (req, res) => {
   try {
@@ -66,26 +93,23 @@ export const transferirDesdeFavorito = async (req, res) => {
       return res.status(400).json({ error: 'ID de favorito no válido' });
     }
 
-    if (!monto || isNaN(monto) || parseFloat(monto) <= 0) {
+    if (monto === undefined || monto === null || isNaN(monto) || parseFloat(monto) <= 0) {
       return res.status(400).json({ error: 'Monto inválido' });
     }
 
     const usuarioId = req.usuario._id;
+
     const favorito = await Favorito.findOne({ _id: id, usuarioId });
 
     if (!favorito) {
       return res.status(404).json({ error: 'Favorito no encontrado' });
     }
 
-    // Aquí iría la lógica real de transferencia, por ahora solo se simula.
-    res.json({
-      mensaje: `Transferencia de $${monto} a la cuenta ${favorito.cuentaDestino} realizada exitosamente.`,
+    return res.json({
+      mensaje: `Transferencia de Q${parseFloat(monto).toFixed(2)} a la cuenta ${favorito.cuentaDestino} realizada exitosamente.`,
     });
   } catch (err) {
     console.error('Error al realizar la transferencia:', err);
-    res.status(500).json({ error: 'Error al realizar la transferencia', detalle: err.message });
+    return res.status(500).json({ error: 'Error al realizar la transferencia', detalle: err.message });
   }
 };
-
-
-
