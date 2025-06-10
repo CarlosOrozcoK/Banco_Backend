@@ -79,6 +79,7 @@ export const eliminarFavorito = async (req, res) => {
   }
 };
 
+
 // Transferencia desde favorito
 export const transferirDesdeFavorito = async (req, res) => {
   try {

@@ -1,4 +1,3 @@
-// middlewares/validar-jwt.js
 import jwt from 'jsonwebtoken';
 
 export const validarJWT = (req, res, next) => {
@@ -10,9 +9,10 @@ export const validarJWT = (req, res, next) => {
 
   try {
     const payload = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
-    req.usuario = { _id: payload.uid }; // Ajusta según cómo esté tu payload
+    req.usuario = { _id: payload.uid };
     next();
   } catch (err) {
-    return res.status(401).json({ error: 'Token no válido' });
+    console.error('Error al verificar el token:', err);
+    return res.status(401).json({ error: 'Token no válido', detalle: err.message });
   }
 };
