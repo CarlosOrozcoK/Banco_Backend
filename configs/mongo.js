@@ -52,7 +52,8 @@ const createDefaultAdmin = async () => {
             const admin = {
                 username: 'ADMINB',
                 password: hashedPassword,
-                role: 'ADMIN_ROLE'
+                role: 'ADMIN_ROLE',
+                status: true
             };
 
             await usersCollection.insertOne(admin);

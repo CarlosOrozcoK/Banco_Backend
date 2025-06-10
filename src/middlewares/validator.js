@@ -15,3 +15,22 @@ export const loginValidator = [
     body("password", "Password must be at least 8 characters!").isLength({ min: 8 }),
     validarCampos
 ];
+
+export const createProductValidator = [
+    body("name", "El nombre del producto es requerido").not().isEmpty(),
+    body("description", "La descripción es requerida").not().isEmpty(),
+    body("category", "La categoría es requerida").not().isEmpty(),
+    validarCampos
+];
+
+export const createServiceValidator = [
+    body("name", "El nombre del servicio es requerido").not().isEmpty(),
+    body("description", "La descripción del servicio es requerida").not().isEmpty(),
+    validarCampos
+];
+
+
+export const createBrandValidator = [
+    body("name", "El nombre de la marca es requerido").not().isEmpty(),
+    validarCampos
+];
