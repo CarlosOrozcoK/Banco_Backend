@@ -1,0 +1,210 @@
+[{
+  "_id": {
+    "$oid": "6848e8e45ad13ec2c8d0a649"
+  },
+  "noCuenta": "5405700703",
+  "saldo": 1419,
+  "tipoCuenta": "MONETARIA",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f2d5530e70a6900777cf"
+  },
+  "noCuenta": "9420046625",
+  "saldo": 1500,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f2fc530e70a6900777d5"
+  },
+  "noCuenta": "2699791723",
+  "saldo": 6484,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f303530e70a6900777db"
+  },
+  "noCuenta": "3953189610",
+  "saldo": 9582,
+  "tipoCuenta": "MONETARIA",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f31c530e70a6900777e1"
+  },
+  "noCuenta": "9920652107",
+  "saldo": 9481,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f324530e70a6900777e7"
+  },
+  "noCuenta": "1088211582",
+  "saldo": 6187,
+  "tipoCuenta": "MONETARIA",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f338530e70a6900777ed"
+  },
+  "noCuenta": "8740022297",
+  "saldo": 1467.08,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f343530e70a6900777f3"
+  },
+  "noCuenta": "8229956357",
+  "saldo": 5076.73,
+  "tipoCuenta": "MONETARIA",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f356530e70a6900777f9"
+  },
+  "noCuenta": "7317208898",
+  "saldo": 964.08,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f362530e70a6900777ff"
+  },
+  "noCuenta": "1063911550",
+  "saldo": 9304,
+  "tipoCuenta": "MONETARIA",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f379530e70a690077805"
+  },
+  "noCuenta": "2727399815",
+  "saldo": 3051,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f381530e70a69007780b"
+  },
+  "noCuenta": "7861558503",
+  "saldo": 5089,
+  "tipoCuenta": "MONETARIA",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f390530e70a690077811"
+  },
+  "noCuenta": "1058692736",
+  "saldo": 4397,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f3a4530e70a690077817"
+  },
+  "noCuenta": "8718336635",
+  "saldo": 9752.98,
+  "tipoCuenta": "MONETARIA",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f3b9530e70a69007781d"
+  },
+  "noCuenta": "1005179427",
+  "saldo": 9945.05,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f3c4530e70a690077823"
+  },
+  "noCuenta": "8598356464",
+  "saldo": 528.34,
+  "tipoCuenta": "MONETARIA",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f3d5530e70a690077829"
+  },
+  "noCuenta": "7699069721",
+  "saldo": 8113,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f3ec530e70a69007782f"
+  },
+  "noCuenta": "4876773796",
+  "saldo": 9230.32,
+  "tipoCuenta": "MONETARIA",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f3fc530e70a690077835"
+  },
+  "noCuenta": "9553457253",
+  "saldo": 5460.53,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f407530e70a69007783b"
+  },
+  "noCuenta": "5170822845",
+  "saldo": 9734.29,
+  "tipoCuenta": "MONETARIA",
+  "status": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848f41b530e70a690077841"
+  },
+  "noCuenta": "4978226984",
+  "saldo": 4901,
+  "tipoCuenta": "AHORRO",
+  "status": true,
+  "__v": 0
+}]

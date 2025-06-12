@@ -1,0 +1,738 @@
+{
+	"info": {
+		"_postman_id": "fbaa9a3a-99ae-42a0-a4b2-cd2eab4c393b",
+		"name": "Colecciones Banco",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37667709"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODE5M2Y5NTU5NjMyZTkyZWVmOTRlYjciLCJpYXQiOjE3NDY0ODk2MTYsImV4cCI6MTc0NjQ5MzIxNn0.DW_bhhGhWnBEOVDAdCBjlg_qkGInRSVXiMiqk-xT0OQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\":\"ADMINB\",\r\n  \"password\":\"ADMINB\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODNmYTBmNGUzNDQyY2Y3ZmJiYzlmYjciLCJpYXQiOjE3NDkwODkyNzMsImV4cCI6MTc0OTA5Mjg3M30.ycjLintUlItdryJk2TI3JkOly04TzdDav8wYy7HxKxw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Juan Orozco\",\r\n  \"username\": \"juano\",\r\n  \"nickname\": \"jp\",\r\n  \"dpi\": \"2345678976567\",\r\n  \"direccion\": \"Calle Falsa 123\",\r\n  \"phone\": \"23456789\",\r\n  \"email\": \"juanorozco@example.com\",\r\n  \"password\": \"12345678\",\r\n  \"profile\": \"Perfil ejemplo\",\r\n  \"nombreTrabajo\": \"Trabajador\",\r\n  \"ingresosMensuales\": 300,\r\n  \"role\": \"CLIENT_ROLE\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Crear Producto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ2ZTdiM2VmYzc5NWNjM2YxMGY2MTMiLCJpYXQiOjE3NDk0Nzc2MDQsImV4cCI6MTc0OTQ4MTIwNH0.lHCenyeaS9rOpORS0q7EhFQ5-v1EMk_LeHtxBKtetag",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Laptop Dell Inspiron\",\r\n  \"description\": \"Laptop de 15 pulgadas con procesador Intel i5\",\r\n  \"category\": \"Tecnología\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/product/createProduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"product",
+								"createProduct"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "ListarUsuarios",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4NGZiM2U5YjJjMzBhOTM5NjM3N2EiLCJpYXQiOjE3NDk1Njk1ODYsImV4cCI6MTc0OTU3MzE4Nn0.Vw9FS1yBsnpyeXvUN9P5erNjnTwVwOKLXwEwpTRQeZE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarporId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4NGZiM2U5YjJjMzBhOTM5NjM3N2EiLCJpYXQiOjE3NDk1NzE4NzIsImV4cCI6MTc0OTU3NTQ3Mn0.HkbbT-jrYDQGZgsTpqq-t0q0t_NPDxt-8wq1YD8uFaM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/user/68484fcce9b2c30a9396377c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"user",
+								"68484fcce9b2c30a9396377c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EditarUsuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4NGZiM2U5YjJjMzBhOTM5NjM3N2EiLCJpYXQiOjE3NDk1NzE4NzIsImV4cCI6MTc0OTU3NTQ3Mn0.HkbbT-jrYDQGZgsTpqq-t0q0t_NPDxt-8wq1YD8uFaM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Pedro Paco\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/user/68484fcce9b2c30a9396377c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"user",
+								"68484fcce9b2c30a9396377c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4NGZiM2U5YjJjMzBhOTM5NjM3N2EiLCJpYXQiOjE3NDk1NzE4NzIsImV4cCI6MTc0OTU3NTQ3Mn0.HkbbT-jrYDQGZgsTpqq-t0q0t_NPDxt-8wq1YD8uFaM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Pedro Paco\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/user/68484fcce9b2c30a9396377c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"user",
+								"68484fcce9b2c30a9396377c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AgregarFavoritos",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "createProduct",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ2Zjc4N2U0MGU5ZGM4ODJjMTcwZjgiLCJpYXQiOjE3NDk0ODE0ODEsImV4cCI6MTc0OTQ4NTA4MX0.zSkCf2TyOL7gs6x1ymDbFTSATt8SGEg0R_TVScZ3rys",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Tarjeta de Crédito\",\r\n  \"description\": \"Producto para realizar compras a crédito.\",\r\n  \"category\": \"Tarjetas Bancarias\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/product/createProduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"product",
+								"createProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "viewProduct",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ2Zjc4N2U0MGU5ZGM4ODJjMTcwZjgiLCJpYXQiOjE3NDk0ODE0ODEsImV4cCI6MTc0OTQ4NTA4MX0.zSkCf2TyOL7gs6x1ymDbFTSATt8SGEg0R_TVScZ3rys",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/product/viewProduct",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"product",
+								"viewProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ2Zjc4N2U0MGU5ZGM4ODJjMTcwZjgiLCJpYXQiOjE3NDk0ODE0ODEsImV4cCI6MTc0OTQ4NTA4MX0.zSkCf2TyOL7gs6x1ymDbFTSATt8SGEg0R_TVScZ3rys",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Cuenta de Ahorros\",\r\n  \"description\": \"Producto diseñado para depósitos con intereses anuales del 3%.\",\r\n  \"category\": \"Cuentas Bancarias\",\r\n  \"interestRate\": \"3%\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/product/deleteProduct/6846f88ee40e9dc882c170fd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"product",
+								"deleteProduct",
+								"6846f88ee40e9dc882c170fd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transacitons",
+			"item": [
+				{
+					"name": "Transeferencia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4ZWM5NDUzMGU3MGE2OTAwNzc3YTMiLCJpYXQiOjE3NDk2MTI0MDQsImV4cCI6MTc0OTYxNjAwNH0.C_0BZSOYRXHGaJhqBSL7vmw3sQ0BOtESCxV1HivpH6M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"destinationAccount\":\"6848f2d5530e70a6900777cf\",\r\n    \"amount\": 1 ,\r\n    \"description\":\"pago del chicle\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/transaction/transfer/6848f2fc530e70a6900777d5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"transaction",
+								"transfer",
+								"6848f2fc530e70a6900777d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mis transacciones",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4ZWM5NDUzMGU3MGE2OTAwNzc3YTMiLCJpYXQiOjE3NDk2MTI0MDQsImV4cCI6MTc0OTYxNjAwNH0.C_0BZSOYRXHGaJhqBSL7vmw3sQ0BOtESCxV1HivpH6M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"destinationAccount\":\"6848f2d5530e70a6900777cf\",\r\n    \"amount\": 1 ,\r\n    \"description\":\"pago del chicle\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/transaction/my/recent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"transaction",
+								"my",
+								"recent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deposito",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Update Deposit",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4ZTI3NDhlYzUyMDc5YjQzZGU0N2IiLCJpYXQiOjE3NDk2MTQzNTgsImV4cCI6MTc0OTYxNzk1OH0.3cBv4wHmWzXc7a3X1gNEXkYrmfp6GuHEipGfmjstN08",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"newAmount\":50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/transaction/deposit/6848ff9ffc7c071b3b79161b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"transaction",
+								"deposit",
+								"6848ff9ffc7c071b3b79161b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revert Deposit",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Listar movimientos cuenta",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Top movimientos",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Agregar Cuenta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4ZTI3NDhlYzUyMDc5YjQzZGU0N2IiLCJpYXQiOjE3NDk2MDg0NDMsImV4cCI6MTc0OTYxMjA0M30.AHp0_qatu78i8aQQnGLLuGgPo86kzBrmv8Qzne4sw3U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\":\"6848e882cb2362fd54f590a5\",\r\n    \"saldo\":\"1000\",\r\n    \"tipoCuenta\":\"MONETARIA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/account/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"account",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarCuentas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4ZTI3NDhlYzUyMDc5YjQzZGU0N2IiLCJpYXQiOjE3NDk2MDg0NDMsImV4cCI6MTc0OTYxMjA0M30.AHp0_qatu78i8aQQnGLLuGgPo86kzBrmv8Qzne4sw3U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\":\"6848e882cb2362fd54f590a5\",\r\n    \"saldo\":\"1000\",\r\n    \"tipoCuenta\":\"MONETARIA\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/account/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"account",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cuentas por usuario",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4ZTI3NDhlYzUyMDc5YjQzZGU0N2IiLCJpYXQiOjE3NDk2MDg0NDMsImV4cCI6MTc0OTYxMjA0M30.AHp0_qatu78i8aQQnGLLuGgPo86kzBrmv8Qzne4sw3U",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\":\"6848e882cb2362fd54f590a5\",\r\n    \"saldo\":\"1000\",\r\n    \"tipoCuenta\":\"MONETARIA\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/account/user/6848ecfd530e70a6900777bb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"account",
+								"user",
+								"6848ecfd530e70a6900777bb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Credito",
+			"item": [
+				{
+					"name": "solicitar credito",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "listar solicitudes de credito",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Aceptar o Rechazar creditos",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODQ4ZTI3NDhlYzUyMDc5YjQzZGU0N2IiLCJpYXQiOjE3NDk2MTUyOTEsImV4cCI6MTc0OTYxODg5MX0.t_4jXOU_7KcBGJJj4W8UuWR0XqNxAU4_KgVWdWps6Is",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"approve\": true,\r\n  \"dueDate\": \"2025-12-31\",\r\n  \"observations\": \"Aprobado por buen historial\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/Backend_Banco/v1/credit/process/6849051731801b402b68eb83",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"Backend_Banco",
+								"v1",
+								"credit",
+								"process",
+								"6849051731801b402b68eb83"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pagar Credito",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

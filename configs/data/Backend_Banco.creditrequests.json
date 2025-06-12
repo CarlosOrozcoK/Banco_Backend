@@ -1,0 +1,87 @@
+[{
+  "_id": {
+    "$oid": "6849028b44aff040897d1e54"
+  },
+  "user": {
+    "$oid": "6848ec94530e70a6900777a3"
+  },
+  "account": {
+    "$oid": "6848f2fc530e70a6900777d5"
+  },
+  "amount": 258,
+  "status": "APPROVED",
+  "requestedAt": {
+    "$date": "2025-06-11T04:14:03.049Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T04:14:03.052Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T04:20:17.903Z"
+  },
+  "approvedAt": {
+    "$date": "2025-06-11T04:20:17.887Z"
+  },
+  "dueDate": {
+    "$date": "2025-12-31T00:00:00.000Z"
+  },
+  "observations": "Aprobado por buen historial"
+},
+{
+  "_id": {
+    "$oid": "684904d898753eddac7e8c10"
+  },
+  "user": {
+    "$oid": "6848ec94530e70a6900777a3"
+  },
+  "account": {
+    "$oid": "6848f2fc530e70a6900777d5"
+  },
+  "amount": 258,
+  "status": "PAID",
+  "requestedAt": {
+    "$date": "2025-06-11T04:23:52.777Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T04:23:52.780Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T04:27:58.043Z"
+  },
+  "approvedAt": {
+    "$date": "2025-06-11T04:24:14.374Z"
+  },
+  "dueDate": {
+    "$date": "2025-12-31T00:00:00.000Z"
+  },
+  "observations": "Aprobado por buen historial"
+},
+{
+  "_id": {
+    "$oid": "6849051731801b402b68eb83"
+  },
+  "user": {
+    "$oid": "6848ec94530e70a6900777a3"
+  },
+  "account": {
+    "$oid": "6848f2fc530e70a6900777d5"
+  },
+  "amount": 258,
+  "status": "APPROVED",
+  "requestedAt": {
+    "$date": "2025-06-11T04:24:55.941Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T04:24:55.941Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T04:25:03.677Z"
+  },
+  "approvedAt": {
+    "$date": "2025-06-11T04:25:03.671Z"
+  },
+  "dueDate": {
+    "$date": "2025-12-31T00:00:00.000Z"
+  },
+  "observations": "Aprobado por buen historial"
+}]

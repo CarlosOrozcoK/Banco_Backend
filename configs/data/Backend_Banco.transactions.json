@@ -1,0 +1,194 @@
+[{
+  "_id": {
+    "$oid": "6848fce15ef641ba6d4ccb95"
+  },
+  "originAccount": {
+    "$oid": "6848f2fc530e70a6900777d5"
+  },
+  "destinationAccount": {
+    "$oid": "6848f2d5530e70a6900777cf"
+  },
+  "amount": 1,
+  "type": "TRANSFER_OUT",
+  "description": "pago del chicle",
+  "status": true,
+  "date": {
+    "$date": "2025-06-11T03:49:53.001Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T03:49:53.001Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T03:49:53.001Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848fce15ef641ba6d4ccb97"
+  },
+  "originAccount": {
+    "$oid": "6848f2fc530e70a6900777d5"
+  },
+  "destinationAccount": {
+    "$oid": "6848f2d5530e70a6900777cf"
+  },
+  "amount": 1,
+  "type": "TRANSFER_IN",
+  "description": "pago del chicle",
+  "status": true,
+  "date": {
+    "$date": "2025-06-11T03:49:53.007Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T03:49:53.008Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T03:49:53.008Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848fed37c38e451a1a3b0e0"
+  },
+  "originAccount": {
+    "$oid": "6848e8e45ad13ec2c8d0a649"
+  },
+  "destinationAccount": {
+    "$oid": "6848e8e45ad13ec2c8d0a649"
+  },
+  "amount": 123,
+  "type": "DEPOSIT",
+  "description": "",
+  "status": true,
+  "date": {
+    "$date": "2025-06-11T03:58:11.417Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T03:58:11.418Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T03:58:11.418Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848ff9ffc7c071b3b79161b"
+  },
+  "originAccount": {
+    "$oid": "6848e8e45ad13ec2c8d0a649"
+  },
+  "destinationAccount": {
+    "$oid": "6848e8e45ad13ec2c8d0a649"
+  },
+  "amount": 50,
+  "type": "DEPOSIT",
+  "description": "",
+  "status": true,
+  "date": {
+    "$date": "2025-06-11T04:01:35.595Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T04:01:35.595Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T04:01:40.984Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6848fffa842091e3a9721d27"
+  },
+  "originAccount": {
+    "$oid": "6848e8e45ad13ec2c8d0a649"
+  },
+  "destinationAccount": {
+    "$oid": "6848e8e45ad13ec2c8d0a649"
+  },
+  "amount": 123,
+  "type": "DEPOSIT",
+  "description": "",
+  "status": false,
+  "date": {
+    "$date": "2025-06-11T04:03:06.590Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T04:03:06.591Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T04:03:12.081Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684904ee31801b402b68eb7d"
+  },
+  "originAccount": null,
+  "destinationAccount": {
+    "$oid": "6848f2fc530e70a6900777d5"
+  },
+  "amount": 258,
+  "type": "CREDIT",
+  "description": "Credit approved. Due date: 2025-12-31",
+  "status": true,
+  "date": {
+    "$date": "2025-06-11T04:24:14.390Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T04:24:14.390Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T04:24:14.390Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6849051f31801b402b68eb89"
+  },
+  "originAccount": null,
+  "destinationAccount": {
+    "$oid": "6848f2fc530e70a6900777d5"
+  },
+  "amount": 258,
+  "type": "CREDIT",
+  "description": "Credit approved. Due date: 2025-12-31",
+  "status": true,
+  "date": {
+    "$date": "2025-06-11T04:25:03.675Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T04:25:03.676Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T04:25:03.676Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "684905ce0bfb523cc6618312"
+  },
+  "originAccount": {
+    "$oid": "6848f2fc530e70a6900777d5"
+  },
+  "destinationAccount": null,
+  "amount": 258,
+  "type": "CREDIT_PAYMENT",
+  "description": "Credit payment for credit #684904d898753eddac7e8c10",
+  "status": true,
+  "date": {
+    "$date": "2025-06-11T04:27:58.036Z"
+  },
+  "createdAt": {
+    "$date": "2025-06-11T04:27:58.037Z"
+  },
+  "updatedAt": {
+    "$date": "2025-06-11T04:27:58.037Z"
+  },
+  "__v": 0
+}]
