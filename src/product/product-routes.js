@@ -9,6 +9,18 @@ import {checkDuplicateProduct,validarAdminRole} from "../middlewares/validar-rol
 
 const router = Router();
 
+/**
+ * @swagger
+ * /product/createProduct:
+ *   post:
+ *     summary: Crear un nuevo producto
+ *     tags: [Product]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       201:
+ *         description: Producto creado exitosamente
+ */
 router.post(
  '/createProduct',
   [validateJWT,
@@ -20,6 +32,18 @@ router.post(
   createProduct
 );
 
+/**
+ * @swagger
+ * /product/viewProduct:
+ *   get:
+ *     summary: Obtener todos los productos
+ *     tags: [Product]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lista de productos
+ */
 router.get(
  '/viewProduct',
   validateJWT,

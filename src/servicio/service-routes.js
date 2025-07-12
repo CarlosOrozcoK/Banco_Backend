@@ -7,6 +7,18 @@ import{checkDuplicateService,validarAdminRole} from "../middlewares/validar-role
 
 const router = Router();
 
+/**
+ * @swagger
+ * /service/createService:
+ *   post:
+ *     summary: Crear un nuevo servicio
+ *     tags: [Service]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       201:
+ *         description: Servicio creado exitosamente
+ */
 router.post(
  '/createService',
   [validateJWT,
@@ -15,9 +27,20 @@ router.post(
   checkDuplicateService
   ],
   createService
-
 );
 
+/**
+ * @swagger
+ * /service/viewService:
+ *   get:
+ *     summary: Obtener todos los servicios
+ *     tags: [Service]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Lista de servicios
+ */
 router.get(
  '/viewService',
   validateJWT,

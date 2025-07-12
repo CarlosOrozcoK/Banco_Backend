@@ -9,12 +9,6 @@ import {
     getMyRecentMovements
 } from './transactions.controller.js';
 
-import { 
-    makeTransferValidator, 
-    makeDepositValidator, 
-    updateDepositAmountValidator, 
-    getAccountMovementsValidator 
-} from '../middlewares/validator.js';
 
 import { 
     validateTransferLimits, 
@@ -23,59 +17,152 @@ import {
 } from '../middlewares/transactions-limits.js';
 
 import { validarJWT } from '../middlewares/validar-jwt.js';
-import { tieneRole } from '../middlewares/validar-roles.js';
 
 const router = Router();
 
-// CLIENT
+/**
+ * @swagger
+ * /transactions/transfer/{originAccount}:
+ *   post:
+ *     summary: Realizar transferencia
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: originAccount
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Transferencia realizada
+ */
 router.post('/transfer/:originAccount', 
-    validarJWT, 
-    tieneRole('CLIENT_ROLE'),
-    makeTransferValidator,
+    validarJWT,
     validateTransferLimits, 
     makeTransfer
 );
 
+/**
+ * @swagger
+ * /transactions/my/recent:
+ *   get:
+ *     summary: Obtener movimientos recientes del cliente
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Movimientos recientes
+ */
 router.get('/my/recent', 
     validarJWT,
-    tieneRole('CLIENT_ROLE'),
     getMyRecentMovements
-
 );
 
-// ADMIN
+/**
+ * @swagger
+ * /transactions/deposit:
+ *   post:
+ *     summary: Realizar depósito
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       201:
+ *         description: Depósito realizado
+ */
 router.post('/deposit', 
     validarJWT,
-    tieneRole('ADMIN_ROLE'),
-    makeDepositValidator, 
     makeDeposit
 );
 
+/**
+ * @swagger
+ * /transactions/deposit/{transactionId}:
+ *   put:
+ *     summary: Actualizar monto de depósito
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: transactionId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Depósito actualizado
+ */
 router.put('/deposit/:transactionId', 
     validarJWT, 
-    tieneRole("ADMIN_ROLE"),
-    updateDepositAmountValidator, 
     validateDepositUpdateTimeLimit, 
     updateDepositAmount
 );
 
+/**
+ * @swagger
+ * /transactions/revertdeposit/{transactionId}:
+ *   post:
+ *     summary: Revertir depósito
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: transactionId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Depósito revertido
+ */
 router.post('/revertdeposit/:transactionId',
     validarJWT,
-    tieneRole("ADMIN_ROLE"),
     validateDepositRevertTimeLimit, 
     revertDepositAmount
 );
 
+/**
+ * @swagger
+ * /transactions/account/{accountId}:
+ *   get:
+ *     summary: Obtener movimientos de una cuenta
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: accountId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Movimientos de la cuenta
+ */
 router.get('/account/:accountId',
     validarJWT,
-    tieneRole('ADMIN_ROLE'),
     getAccountMovements
 );
 
+/**
+ * @swagger
+ * /transactions/top-movements:
+ *   get:
+ *     summary: Obtener movimientos principales
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Movimientos principales
+ */
 router.get('/top-movements', 
     validarJWT,
-    tieneRole('ADMIN_ROLE'),
-    getAccountMovementsValidator, 
     getTopMovements
 );
 

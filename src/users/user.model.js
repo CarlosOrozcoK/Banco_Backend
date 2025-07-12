@@ -26,6 +26,12 @@ const UserSchema = Schema({
         type: String,
         unique: true,
     },
+    
+    cuentas: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Account',
+        default: []
+    }],
 
     dpi: {
         type: String,

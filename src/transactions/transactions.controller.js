@@ -6,8 +6,6 @@ export const makeTransfer = async (req, res) => {
     try {
         const originAccountId = req.params.originAccount;
         const { destinationAccount, amount, description = "" } = req.body;
-        const { usuario } = req;
-        
 
         if (!destinationAccount) {
             return res.status(400).json({
@@ -16,7 +14,7 @@ export const makeTransfer = async (req, res) => {
         }
 
         if (amount <= 0) {
-            return res.status(400).json({ 
+            return res.status(400).json({
                 msg: "Amount must be greater than zero"
             });
         }
@@ -24,12 +22,8 @@ export const makeTransfer = async (req, res) => {
         const origin = await Account.findById(originAccountId);
         const destination = await Account.findById(destinationAccount);
 
-        console.log("monto:", amount);
-        console .log("Origin Account:", origin);
-        console.log("Destination Account:", destination);
-
         if (!origin || !origin.status) {
-            return res.status(404).json({ 
+            return res.status(404).json({
                 msg: "Origin account not found or inactive"
             });
         }
@@ -40,29 +34,20 @@ export const makeTransfer = async (req, res) => {
             });
         }
 
-        const ownsAccount = usuario.cuentas.some(
-            (accId) => accId.toString() === originAccountId
-        );
-        
-        if (!ownsAccount) {
-            return res.status(403).json({ 
-                msg: "You do not own the origin account" 
-            });
-        }
-
         if (origin.saldo < amount) {
             return res.status(400).json({
                 msg: "Insufficient funds"
             });
         }
 
+        // Actualizar saldos
         origin.saldo = Number((origin.saldo - amount).toFixed(2));
         destination.saldo = Number((destination.saldo + amount).toFixed(2));
 
         await origin.save();
         await destination.save();
 
-        // Registro para la cuenta de origen (salida)
+        // Registrar transacción de salida
         const transferOut = new Transaction({
             originAccount: origin._id,
             destinationAccount: destination._id,
@@ -72,7 +57,7 @@ export const makeTransfer = async (req, res) => {
         });
         await transferOut.save();
 
-        // Registro para la cuenta de destino (entrada)
+        // Registrar transacción de entrada
         const transferIn = new Transaction({
             originAccount: origin._id,
             destinationAccount: destination._id,
@@ -87,10 +72,12 @@ export const makeTransfer = async (req, res) => {
             transferOut,
             transferIn
         });
+
     } catch (err) {
         console.error(err);
-        res.status(500).json({ msg: 
-            "Server error", error: err.message 
+        res.status(500).json({
+            msg: "Server error",
+            error: err.message
         });
     }
 };
@@ -100,16 +87,17 @@ export const makeDeposit = async (req, res) => {
     try {
         const { destinationAccount, amount, description = '' } = req.body;
 
-        if (!destinationAccount || !amount){
-            return res.status(400).json({ 
-                msg: 'Destination and amount required'
+        if (!destinationAccount || !amount) {
+            return res.status(400).json({
+                msg: 'Destination account and amount are required'
             });
         }
-            
+
         const destination = await Account.findById(destinationAccount);
-        if (!destination || !destination.status){
-            return res.status(404).json({ 
-                msg: 'Destination account not found or inactive' 
+
+        if (!destination || !destination.status) {
+            return res.status(404).json({
+                msg: 'Destination account not found or inactive'
             });
         }
 
@@ -119,25 +107,27 @@ export const makeDeposit = async (req, res) => {
         const tx = await Transaction.create({
             originAccount: destinationAccount,
             destinationAccount: destinationAccount,
-            amount: amount,
+            amount: Number(amount),
             type: 'DEPOSIT',
             description,
             status: true
         });
 
-        return res.status(201).json({ 
-            msg: 'Deposit successful', 
-            transaction: tx, 
+        return res.status(201).json({
+            msg: 'Deposit successful',
+            transaction: tx,
             newBalance: destination.saldo
         });
 
     } catch (err) {
+        console.error(err);
         res.status(500).json({
-            msg: 'Server error', 
-            error: err.message 
+            msg: 'Server error',
+            error: err.message
         });
     }
 };
+
 
 // ADMIN - Actualizar cantidad de un depósito
 export const updateDepositAmount = async (req, res) => {
@@ -146,16 +136,16 @@ export const updateDepositAmount = async (req, res) => {
         const { newAmount } = req.body;
 
         const tx = await Transaction.findById(transactionId);
-        if (!tx || tx.type !== 'DEPOSIT'){
-            return res.status(404).json({ 
-                msg: 'Deposit not found' 
+        if (!tx || tx.type !== 'DEPOSIT') {
+            return res.status(404).json({
+                msg: 'Deposit not found'
             });
         }
 
         const account = await Account.findById(tx.destinationAccount);
-        if (!account){
-            return res.status(404).json({ 
-                msg: 'Account not found' 
+        if (!account) {
+            return res.status(404).json({
+                msg: 'Account not found'
             });
         }
 
@@ -164,15 +154,15 @@ export const updateDepositAmount = async (req, res) => {
 
         await Promise.all([tx.save(), account.save()]);
 
-        return res.status(200).json({ 
-            msg: 'Deposit updated', 
-            transaction: tx, 
-            newBalance: account.saldo 
+        return res.status(200).json({
+            msg: 'Deposit updated',
+            transaction: tx,
+            newBalance: account.saldo
         });
     } catch (err) {
-        return res.status(500).json({ 
-            msg: 'Server error', 
-            error: err.message 
+        return res.status(500).json({
+            msg: 'Server error',
+            error: err.message
         });
     }
 };
@@ -184,17 +174,17 @@ export const revertDepositAmount = async (req, res) => {
 
         const tx = await Transaction.findById(transactionId);
 
-        if (!tx || tx.type !== 'DEPOSIT' || !tx.status){
-            return res.status(404).json({ 
-                msg: 'Active deposit not found' 
+        if (!tx || tx.type !== 'DEPOSIT' || !tx.status) {
+            return res.status(404).json({
+                msg: 'Active deposit not found'
             });
         }
 
         const account = await Account.findById(tx.destinationAccount);
 
-        if (!account){
+        if (!account) {
             return res.status(404).json({
-                msg: 'Account not found' 
+                msg: 'Account not found'
             });
         }
 
@@ -203,15 +193,15 @@ export const revertDepositAmount = async (req, res) => {
 
         await Promise.all([account.save(), tx.save()]);
 
-        return res.status(200).json({ 
-            msg: 'Deposit reverted', 
-            transaction: tx, 
+        return res.status(200).json({
+            msg: 'Deposit reverted',
+            transaction: tx,
             newBalance: account.saldo
         });
     } catch (err) {
-        return res.status(500).json({ 
-            msg: 'Server error', 
-            error: err.message 
+        return res.status(500).json({
+            msg: 'Server error',
+            error: err.message
         });
     }
 };
@@ -223,29 +213,29 @@ export const getAccountMovements = async (req, res) => {
         const { limit = 10, from = 0 } = req.query;
 
         const query = {
-        $or: [
-            { originAccount: accountId },
-            { destinationAccount: accountId }
-        ]
+            $or: [
+                { originAccount: accountId },
+                { destinationAccount: accountId }
+            ]
         };
 
         const [total, transactions] = await Promise.all([
-        Transaction.countDocuments(query),
-        Transaction.find(query)
-            .skip(Number(from))
-            .limit(Number(limit))
-            .sort({ createdAt: -1 })
-            .populate('originAccount', 'noCuenta tipoCuenta')
-            .populate('destinationAccount', 'noCuenta tipoCuenta')
+            Transaction.countDocuments(query),
+            Transaction.find(query)
+                .skip(Number(from))
+                .limit(Number(limit))
+                .sort({ createdAt: -1 })
+                .populate('originAccount', 'noCuenta tipoCuenta')
+                .populate('destinationAccount', 'noCuenta tipoCuenta')
         ]);
 
-        return res.status(200).json({ 
+        return res.status(200).json({
             total, transactions
         });
     } catch (err) {
-        return res.status(500).json({ 
-            msg: 'Error getting movements', 
-            error: err.message 
+        return res.status(500).json({
+            msg: 'Error getting movements',
+            error: err.message
         });
     }
 };
@@ -265,16 +255,20 @@ export const getTopMovements = async (req, res) => {
                     ]
                 }
             },
-            { $project: {
-                combined: {
-                    $concatArrays: ["$asOrigin", "$asDestination"]
+            {
+                $project: {
+                    combined: {
+                        $concatArrays: ["$asOrigin", "$asDestination"]
+                    }
                 }
-            }},
+            },
             { $unwind: "$combined" },
-            { $group: {
-                _id: "$combined._id",
-                totalMovements: { $sum: "$combined.total" }
-            }},
+            {
+                $group: {
+                    _id: "$combined._id",
+                    totalMovements: { $sum: "$combined.total" }
+                }
+            },
             { $sort: { totalMovements: order } },
             { $limit: 5 },
             {
@@ -297,13 +291,13 @@ export const getTopMovements = async (req, res) => {
             }
         ]);
 
-        return res.status(200).json({ 
-            top 
+        return res.status(200).json({
+            top
         });
     } catch (err) {
-        return res.status(500).json({ 
-            msg: 'Error fetching top movements', 
-            error: err.message 
+        return res.status(500).json({
+            msg: 'Error fetching top movements',
+            error: err.message
         });
     }
 };
@@ -314,23 +308,23 @@ export const getMyRecentMovements = async (req, res) => {
         const { usuario } = req;
 
         const txs = await Transaction.find({
-        $or: [
-            { originAccount: { $in: usuario.cuentas } },
-            { destinationAccount: { $in: usuario.cuentas } }
-        ]
+            $or: [
+                { originAccount: { $in: usuario.cuentas } },
+                { destinationAccount: { $in: usuario.cuentas } }
+            ]
         })
-        .sort({ createdAt: -1 })
-        .limit(5)
-        .populate('originAccount', 'noCuenta tipoCuenta')
-        .populate('destinationAccount', 'noCuenta tipoCuenta');
+            .sort({ createdAt: -1 })
+            .limit(5)
+            .populate('originAccount', 'noCuenta tipoCuenta')
+            .populate('destinationAccount', 'noCuenta tipoCuenta');
 
-        return res.status(200).json({ 
-            transactions: txs 
+        return res.status(200).json({
+            transactions: txs
         });
     } catch (err) {
-        return res.status(500).json({ 
-            msg: 'Error fetching recent movements', 
-            error: err.message 
+        return res.status(500).json({
+            msg: 'Error fetching recent movements',
+            error: err.message
         });
     }
 };

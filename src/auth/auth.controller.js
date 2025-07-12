@@ -30,8 +30,10 @@ export const login = async (req, res) => {
         return res.status(200).json({
             msg: 'Login completado!',
             userDetails: {
+                _id: user._id,
                 username: user.username,
-                token
+                token,
+                noCuenta: user.cuentas.length > 0 ? user.cuentas[0] : null, // Assuming the first account is the primary one
             }
         });
     } catch (error) {
