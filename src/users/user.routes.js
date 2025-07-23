@@ -7,7 +7,7 @@ import {
     agregarCuentaFavorito
 } from "../users/user.controller.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
-import { tieneRole  } from "../middlewares/validar-roles.js";
+import { validarAdminRole  } from "../middlewares/validar-roles.js";
  
 const router = Router();
 
@@ -26,7 +26,7 @@ const router = Router();
 router.get(
     "/",
     validarJWT,
-    tieneRole("ADMIN_ROLE"),
+    validarAdminRole,
     getUsuarios
 );
 
@@ -51,7 +51,7 @@ router.get(
 router.get(
     "/:id",
     validarJWT,
-    tieneRole("ADMIN_ROLE"),
+    validarAdminRole,
     getUsuarioById
 );
 
@@ -95,7 +95,7 @@ router.patch(
 router.put(
     "/:id",
     validarJWT,
-    tieneRole("ADMIN_ROLE",),
+    validarAdminRole,
     putUsuario
 );
 
@@ -120,7 +120,7 @@ router.put(
 router.delete(
     "/:id",
     validarJWT,
-    tieneRole("ADMIN_ROLE"),
+    validarAdminRole,
     deleteUsuario
 );
 

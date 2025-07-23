@@ -26,7 +26,7 @@ const router = Router();
  */
 router.post('/request',
     validarJWT,
-    tieneRole('CLIENT_ROLE'),
+   tieneRole('CLIENT_ROLE'),
     requestCredit);
 
 /**
@@ -66,7 +66,7 @@ router.get('/requests',
  */
 router.post('/process/:creditId',
     validarJWT,
-    tieneRole('ADMIN_ROLE'),
+   tieneRole('ADMIN_ROLE'),
     processCreditRequest);
 
 /**

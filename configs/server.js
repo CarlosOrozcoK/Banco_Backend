@@ -13,8 +13,9 @@ import serviceRoutes from '../src/servicio/service-routes.js'
 import brandRoutes from '../src/Brand/brand-routes.js'
 import transactionRoutes from "../src/transactions/transactions.routes.js"
 import accounts from "../src/account/account.routes.js"
+import creditRoutes from "../src/credit/credit.routes.js"
 import { swaggerDocs, swaggerUi } from './swagger.js';
-
+import userRoutes from '../src/users/user.routes.js';
 
 dotenv.config();
 
@@ -42,6 +43,8 @@ const routes = (app) => {
     app.use("/Backend_Banco/v1/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
     app.use("/Backend_Banco/v1/transaction", transactionRoutes)
     app.use("/Backend_Banco/v1/accounts", accounts)
+    app.use("/Backend_Banco/v1/user", userRoutes);
+    app.use("/Backend_Banco/v1/credit", creditRoutes);
 }
 
 const conectarDB = async () => {

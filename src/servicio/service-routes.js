@@ -22,9 +22,7 @@ const router = Router();
 router.post(
  '/createService',
   [validateJWT,
-    validarAdminRole,
   createServiceValidator,
-  checkDuplicateService
   ],
   createService
 );

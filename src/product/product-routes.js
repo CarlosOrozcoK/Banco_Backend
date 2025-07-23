@@ -2,9 +2,9 @@ import { Router } from "express";
 import { check } from "express-validator";
 import { validateJWT } from "../middlewares/validateJWT.js";
 import { validarCampos } from "../middlewares/validar-campos.js";
-import { createProduct, getProduct ,updateProduct,deleteProduct} from "./product-controller.js";
-import {createProductValidator} from  "../middlewares/validator.js";
-import {checkDuplicateProduct,validarAdminRole} from "../middlewares/validar-roles.js"
+import { createProduct, getProduct, updateProduct, deleteProduct } from "./product-controller.js";
+import { createProductValidator } from "../middlewares/validator.js";
+import { checkDuplicateProduct, validarAdminRole } from "../middlewares/validar-roles.js"
 
 
 const router = Router();
@@ -22,12 +22,9 @@ const router = Router();
  *         description: Producto creado exitosamente
  */
 router.post(
- '/createProduct',
+  '/createProduct',
   [validateJWT,
-   createProductValidator ,
-   checkDuplicateProduct,
-   validarAdminRole
-
+    createProductValidator,
   ],
   createProduct
 );
@@ -45,27 +42,27 @@ router.post(
  *         description: Lista de productos
  */
 router.get(
- '/viewProduct',
+  '/viewProduct',
   validateJWT,
   getProduct
 );
 
 router.put(
- '/updateProduct/:id',
+  '/updateProduct/:id',
   [validateJWT,
-  validarAdminRole
-],
+    validarAdminRole
+  ],
   updateProduct
 );
 
 router.delete(
- '/deleteProduct/:id',
-   [
-        validateJWT,
-        check("password", "La contraseña es obligatoria").not().isEmpty(),
-        validarCampos,
-        validarAdminRole
-    ],
+  '/deleteProduct/:id',
+  [
+    validateJWT,
+    check("password", "La contraseña es obligatoria").not().isEmpty(),
+    validarCampos,
+    validarAdminRole
+  ],
   deleteProduct
 );
 

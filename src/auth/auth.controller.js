@@ -33,7 +33,8 @@ export const login = async (req, res) => {
                 _id: user._id,
                 username: user.username,
                 token,
-                noCuenta: user.cuentas.length > 0 ? user.cuentas[0] : null, // Assuming the first account is the primary one
+                noCuenta: user.cuentas && user.cuentas.length > 0 ? user.cuentas[0] : null,
+                role: user.role,
             }
         });
     } catch (error) {
