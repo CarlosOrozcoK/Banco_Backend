@@ -28,7 +28,7 @@ const limiter = rateLimit({
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false }));
-    app.use(cors());
+    app.use(cors({origin: "https://banco-frontend.vercel.app"}));
     app.use(express.json());
     app.use(helmet());
     app.use(morgan('dev'));
